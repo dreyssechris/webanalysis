@@ -18,13 +18,19 @@ for file in os.listdir("."):
         try:
             with open(file, "r", encoding="utf-8") as f:
                 content = f.read()
-
+            
             if "</body>" in content:
-                # insert before "</body>"
-                new_content = content.replace("</body>", root_insertion + "</body>")
-                with open(file, "w", encoding="utf-8") as f:
-                    f.write(new_content)
-                print(f"Scripts inserted into (root): {file}")
+                # check if one tag is existing
+                if (root_tracking_script in content or 
+                    root_confirm_script  in content or 
+                    root_withdraw_script in content):
+                    print(f"Scripts already inserted in (root): {file}")
+                else:
+                    # insert before "</body>"
+                    new_content = content.replace("</body>", root_insertion + "</body>")
+                    with open(file, "w", encoding="utf-8") as f:
+                        f.write(new_content)
+                    print(f"Scripts inserted into (root): {file}")
             else:
                 print(f"No </body> tag found in (root): {file}")
         except Exception as e:
@@ -44,7 +50,7 @@ sub_insertion       = sub_confirm_script + "\n" + sub_withdraw_script + "\n" + s
 for dirpath, dirnames, filenames in os.walk("."):
     # skip root dir cause links are different
     if os.path.abspath(dirpath) == os.path.abspath("."):
-        continue
+        continue 
     for file in filenames:
         if file.lower().endswith(".html"):
             file_path = os.path.join(dirpath, file)
@@ -52,12 +58,47 @@ for dirpath, dirnames, filenames in os.walk("."):
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
                 if "</body>" in content:
-                    # insert before "</body>"
-                    new_content = content.replace("</body>", sub_insertion + "</body>")
-                    with open(file_path, "w", encoding="utf-8") as f:
-                        f.write(new_content)
-                    print(f"Scripts inserted into (sub): {file_path}")
+                    # check if one tag is existing
+                    if (sub_tracking_script in content or 
+                        sub_confirm_script  in content or 
+                        sub_withdraw_script in content):
+                        print(f"Scripts already inserted in (sub): {file_path}")
+                    else:
+                        # insert before "</body>"
+                        new_content = content.replace("</body>", sub_insertion + "</body>")
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            f.write(new_content)
+                        print(f"Scripts inserted into (sub): {file_path}")
                 else:
                     print(f"No </body> tag found in: {file_path}")
             except Exception as e:
                 print(f"Error editing {file_path}: {e}")
+
+#############################################################
+# part 3: create `_assets/js` and insert scripts if missing
+#############################################################
+
+target_folder = os.path.join("_assets", "js")
+
+if not os.path.isdir(target_folder): 
+    os.makedirs(target_folder)
+    print(f"Successfully created folder: {target_folder}")
+else: 
+    print(f"Folder already exists: {target_folder}")
+
+# create those files if not existing
+files_to_create = {
+    "confirmConsent.js": "// confirmConsent.js - Standardinhalt\n",
+    "tracking.js": "// tracking.js - Standardinhalt\n",
+    "withdrawConsent.js": "// withdrawConsent.js - Standardinhalt\n"
+}
+
+# for each file check if exists - if not it will be created
+for filename, default_content in files_to_create.items(): 
+    file_path = os.path.join(target_folder, filename)
+    if not os.path.exists(file_path): 
+        with open(file_path, "w", encoding="utf-8") as f: 
+            f.write(default_content)
+        print(f"Created Script: {file_path}")
+    else: 
+        print(f"File already exists: {file_path}")

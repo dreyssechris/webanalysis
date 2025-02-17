@@ -1,0 +1,507 @@
+.logo .ce-above .ce-gallery,
+footer .ce-above .ce-gallery,
+.joBannerWrapper .ce-above .ce-gallery {
+    margin-bottom: 0;
+}
+.joOuterDiv {
+    min-height: 100vh;
+}
+#joNavi {
+    background-color: black;
+}
+footer {
+    background-color: black;
+    color: white;
+}
+.color-green {
+    color: green;
+}
+.joMainWrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Banner - Start */
+.joBannerWrapper img {
+    transform: scale(1);
+    transition: .75s transform ease;
+    width: 100%;
+    height: auto;
+}
+.joBannerWrapper img:hover {
+    transform: scale(1.05);
+}
+
+/* Banner - Ende */
+
+/* Mobile Burger Menu */
+.navbar-toggler,
+.navbar-toggler:focus {
+    border: none;
+    outline: none;
+}
+.burger-inner .top-bun,
+.burger-inner .patty,
+.burger-inner .bottom-bun {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    content: '';
+    height: 1px;
+    transition: transform 250ms cubic-bezier(.2, .6, .3, 1), width 250ms cubic-bezier(.2, .6, .3, 1);
+    will-change: transform, width;
+}
+.burger-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+}
+.burger-inner {
+    width: 100%;
+    height: 100%;
+}
+.burger-inner .top-bun,
+.burger-inner .patty,
+.burger-inner .bottom-bun {
+    background-color: #000;
+}
+.navbar-toggler.collapsed .burger-inner .top-bun,
+.navbar-toggler.collapsed .burger-inner .bottom-bun,
+.navbar-toggler.collapsed .burger-inner .patty {
+    width: 100%;
+}
+.navbar-toggler.collapsed .burger-inner .top-bun {
+    transform: translatey(-9.5px);
+}
+.navbar-toggler.collapsed .burger-inner .bottom-bun {
+    transform: translatey(9.5px);
+}
+.navbar-toggler.collapsed .burger-inner .patty {
+    transform: scale(1);
+}
+.navbar-toggler .burger-inner .patty {
+    transform: scale(0);
+}
+.navbar-toggler .burger-inner .top-bun {
+    transform: translatex(3.5px) rotate(-135deg);
+    width: 28px;
+}
+.navbar-toggler .burger-inner .bottom-bun {
+    transform: translatex(3.5px) rotate(135deg);
+    width: 28px;
+}
+
+/* Mobile Burger Menu - Ende */
+
+/* Cookie - Start */
+#cookie-teaser {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-height: 50px;
+    width: 100%;
+    z-index: 999999999;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 20px;
+    font-size: 15px;
+    line-height: 28px;
+    display: none;
+    text-align: center;
+}
+#cookie-teaser #cookieOk {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 20px;
+    color: #333;
+}
+#cookie-teaser .joUnderline {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* Cookie - Ende */
+
+/* Sprite */
+.joSprite {
+    background-image: url('../../Images/sprite_portal_black.svg');
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    background-color: transparent;
+    background-size: 950px;
+    background-repeat: no-repeat;
+}
+/* Sprite - Ende */
+
+/* Back to Top Link */
+a.back-to-top {
+    z-index: 99999;
+    background-color: var(--default_bg);
+    width: 40px;
+    height: 0px;
+    opacity: 0;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    transition: opacity 1s, height 1s, bottom .5s;
+}
+a.back-to-top .vp {
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    transform: rotate(-90deg);
+}
+a.back-to-top.active {
+    opacity: 1;
+    height: 40px;
+}
+a.back-to-top .joSprite {
+    background-image: url('../../Images/sprite_portal_white.svg');
+    background-position: -328px -28px;
+    background-size: 500px;
+}
+
+/* Back to Top Link - Ende */
+
+/* ajax loader - start */
+#joAjaxloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+}
+#joAjaxloader .joLoader {
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+#sidebarCollapse {
+    display: none;
+}
+/* ajax laoder - ende */
+
+.gridcontent.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Layout Abstände - Start */
+.layout-0 #maincontent {
+    padding-left: 0;
+    padding-right: 0;
+}
+.layout-100 #maincontent {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.layout-101 #maincontent {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.layout-102 #maincontent {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.layout-103 #maincontent {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.layout-104 #maincontent {
+    padding-left: 20px;
+    padding-right: 5px;
+}
+.layout-105 #maincontent {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+.layout-120 #maincontent {
+    width: 1200px;
+    margin: 0 auto;
+}
+.layout-121 #maincontent {
+    width: 1600px;
+    margin: 0 auto;
+}
+.frame-default,
+.grid-frame-default {
+    padding-left: 0;
+    padding-right: 0;
+}
+.frame-1,
+.grid-frame-1 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.frame-2,
+.grid-frame-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.frame-3,
+.grid-frame-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.frame-4,
+.grid-frame-4 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.frame-5,
+.grid-frame-5 {
+    padding-left: 20px;
+    padding-right: 5px;
+}
+.frame-6,
+.grid-frame-6 {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+.frame-7,
+.grid-frame-7 {
+    padding-left: 0;
+    padding-right: 20px;
+}
+.frame-8,
+.grid-frame-8 {
+    padding-left: 0;
+    padding-right: 33px;
+}
+.frame-9,
+.grid-frame-9 {
+    padding-left: 20px;
+    padding-right: 0;
+}
+.frame-10,
+.grid-frame-10 {
+    padding-left: 33px;
+    padding-right: 0;
+}
+
+.grid-layout-100 *,
+.grid-layout-101 * {
+    min-height: 0;
+    min-width: 0;
+}
+/* Layout Abstände - Ende */
+@media (min-width:768px) {
+
+    /* Banner - Start */
+    .joBannerWrapper img {
+        width: 100%;
+        height: unset;
+    }
+
+    /* Banner - Ende */
+
+    .layout-100 #maincontent {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .layout-101 #maincontent {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .layout-102 #maincontent {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .layout-103 #maincontent {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .layout-104 #maincontent {
+        padding-left: 30px;
+        padding-right: 15px;
+    }
+    .layout-105 #maincontent {
+        padding-left: 15px;
+        padding-right: 30px;
+    }
+    .layout-120 #maincontent {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .layout-121 #maincontent {
+        width: 1600px;
+        margin: 0 auto;
+    }
+    .frame-default,
+    .grid-frame-default {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .frame-1,
+    .grid-frame-1 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .frame-2,
+    .grid-frame-2 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .frame-3,
+    .grid-frame-3 {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .frame-4,
+    .grid-frame-4 {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .frame-5,
+    .grid-frame-5 {
+        padding-left: 30px;
+        padding-right: 15px;
+    }
+    .frame-6,
+    .grid-frame-6 {
+        padding-left: 15px;
+        padding-right: 30px;
+    }
+    .frame-7,
+    .grid-frame-7 {
+        padding-left: 0;
+        padding-right: 30px;
+    }
+    .frame-8,
+    .grid-frame-8 {
+        padding-left: 0;
+        padding-right: 44px;
+    }
+    .frame-9,
+    .grid-frame-9 {
+        padding-left: 30px;
+        padding-right: 0;
+    }
+    .frame-10,
+    .grid-frame-10 {
+        padding-left: 44px;
+        padding-right: 0;
+    }
+}
+@media (min-width:992px) {
+    .layout-100 #maincontent {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    .layout-101 #maincontent {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+    .layout-102 #maincontent {
+        padding-left: 15vw;
+        padding-right: 15vw;
+    }
+    .layout-103 #maincontent {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+    .layout-104 #maincontent {
+        padding-left: 20vw;
+        padding-right: 5vw;
+    }
+    .layout-105 #maincontent {
+        padding-left: 5vw;
+        padding-right: 20vw;
+    }
+    .layout-120 #maincontent {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .layout-121 #maincontent {
+        width: 1600px;
+        margin: 0 auto;
+    }
+    .frame-default,
+    .grid-frame-default {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .frame-1,
+    .grid-frame-1 {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    .frame-2,
+    .grid-frame-2 {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+    .frame-3,
+    .grid-frame-3 {
+        padding-left: 15vw;
+        padding-right: 15vw;
+    }
+    .frame-4,
+    .grid-frame-4 {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+    .frame-5,
+    .grid-frame-5 {
+        padding-left: 20vw;
+        padding-right: 5vw;
+    }
+    .frame-6,
+    .grid-frame-6 {
+        padding-left: 5vw;
+        padding-right: 20vw;
+    }
+    .frame-7,
+    .grid-frame-7 {
+        padding-left: 0;
+        padding-right: 20vw;
+    }
+    .frame-8,
+    .grid-frame-8 {
+        padding-left: 0;
+        padding-right: 33vw;
+    }
+    .frame-9,
+    .grid-frame-9 {
+        padding-left: 20vw;
+        padding-right: 0;
+    }
+    .frame-10,
+    .grid-frame-10 {
+        padding-left: 33vw;
+        padding-right: 0;
+    }
+}

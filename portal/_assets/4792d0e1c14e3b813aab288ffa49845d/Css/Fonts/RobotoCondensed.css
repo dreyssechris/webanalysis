@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 300;
+    src: url(../../Fonts/Roboto_Condensed/robotocondensed-light.ttf) format('truetype'),
+		 url(../../Fonts/Roboto_Condensed/robotocondensed-light.woff2) format('woff2'),
+         url(../../Fonts/Roboto_Condensed/robotocondensed-light.woff) format('woff');
+}
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../../Fonts/Roboto_Condensed/robotocondensed-regular.ttf) format('truetype'),
+		 url(../../Fonts/Roboto_Condensed/robotocondensed-regular.woff2) format('woff2'),
+         url(../../Fonts/Roboto_Condensed/robotocondensed-regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../../Fonts/Roboto_Condensed/robotocondensed-bold.ttf) format('truetype'),
+		 url(../../Fonts/Roboto_Condensed/robotocondensed-bold.woff2) format('woff2'),
+         url(../../Fonts/Roboto_Condensed/robotocondensed-bold.woff) format('woff');
+}

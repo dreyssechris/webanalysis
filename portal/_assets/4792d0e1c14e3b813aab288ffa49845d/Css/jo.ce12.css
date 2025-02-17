@@ -1,0 +1,212 @@
+.frame-type-jocontent_c12 .gallery-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.frame-type-jocontent_c12 .text-image-50 .img_wrap,
+.frame-type-jocontent_c12 .image-text-50 .img_wrap {
+	height: 100%;
+}
+.frame-type-jocontent_c12 .image-text-50 .image-text-text,
+.frame-type-jocontent_c12 .text-image-50 .image-text-image {
+	padding-left: 5px;
+}
+.frame-type-jocontent_c12 .image-text-50 .image-text-image,
+.frame-type-jocontent_c12 .text-image-50 .image-text-text {
+	padding-right: 5px;
+}
+.frame-type-jocontent_c12 .image-text-50 .image-text-text > div,
+.frame-type-jocontent_c12 .text-image-50 .image-text-text > div {
+    align-items: center;
+    justify-content: center;
+}
+.frame-type-jocontent_c12 .image-text-50 .image-textbox,
+.frame-type-jocontent_c12 .text-image-50 .image-textbox {
+    max-width: 60%;
+    text-align: center;
+    padding: 50px 0;
+}
+.frame-type-jocontent_c12 .image-text-50 .image-textbox-link,
+.frame-type-jocontent_c12 .text-image-50 .image-textbox-link {
+    padding: 5px 10px;
+    background-color: #788A29;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.frame-type-jocontent_c12 .no-frame .image-textbox {
+    font-size: 1.6rem;
+    padding: 5px;
+    background-color: rgb(229, 229, 229);
+    margin: 0 0 20px 0;
+}
+.frame-type-jocontent_c12 .no-frame .image-textbox figcaption {
+    font-weight: 600;
+}
+.frame-type-jocontent_c12 .imgmod2 .image-text-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.frame-type-jocontent_c12 .imgmod2 .img_wrap {
+    position: relative;
+    padding-bottom: 100%;
+    height: unset;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+.frame-type-jocontent_c12 .imgmod2 .gallery-image {
+	border-radius: 100%;
+	position: absolute;
+}
+.frame-type-jocontent_c12 .effect2 .img_wrap a {
+    display: block;
+   /* height: 100%; */
+    overflow: hidden;
+}
+.frame-type-jocontent_c12 .effect2 .img_wrap a img {
+    transform: scale(1);
+    transition: transform 1s ease;
+}
+.frame-type-jocontent_c12 .effect2 .img_wrap a:hover img {
+    transform: scale(1.1);
+}
+.frame-type-jocontent_c12 .image-text-100 .img_wrap {
+    padding-bottom: 25%;
+    width: 25%;
+    margin: 0 auto;
+}
+.frame-type-jocontent_c12 .image-text-100 .image-text-text > div {
+    width: 60%;
+    margin: 25px auto 0;
+    text-align: center;
+}
+.frame-type-jocontent_c12 .image-text-image {
+    position: relative;
+}
+.frame-type-jocontent_c12 .lnk-wr {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 10px;
+    background-color: #788A29;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 20px;
+    display: inline-block;
+}
+.frame-type-jocontent_c12 figure {
+    margin: 0;
+}
+.frame-type-jocontent_c12 .img_wrap figcaption {
+
+}
+.frame-type-jocontent_c12 .img_inner_wrap {
+    position: relative;
+}
+/*
+.image-text-text{
+	display: flex;
+	justify-content: center;
+	-webkit-box-align: center;
+    -webkit-align-items: center;
+    flex-align: center;
+    padding: 5%;
+}
+.text-image-50 .image-textbox{
+	padding: 0% 5%;
+	margin: 0;
+	background-color: transparent;
+}
+.image-text-50 .image-textbox{
+	padding: 0% 5%;
+	margin: 0;
+	background-color: transparent;
+}
+.effect2 .image-textbox {
+    transition: top 1s;
+    height: 100%;
+    background-color: rgba(0,0,0,.75);
+    color: white;
+    position: absolute;
+    top: 100%;
+    overflow: hidden;
+}
+.effect2 .gallery-image{
+	transition: 1s;
+}
+.effect2 figure:hover .image-textbox {
+    top: 0%;
+}
+.effect2 figure:hover .gallery-image {
+   	filter: blur(4px);
+		-webkit-filter: blur(4px);
+}
+.effect2 .image-block{
+	overflow: hidden;
+}
+.effect2 .image-block a{
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+.frame-type-jocontent_c12 .image-textbox {
+	color: black;
+}
+
+.imgmod2 img{
+	border-radius: 50%;
+}
+.padding2 .img_wrap{
+	padding:40px;
+}
+.padding3 .img_wrap{
+	padding:80px;
+}
+
+.frame-type-jocontent_c12 .image-textbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    background-color: transparent;
+    padding: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    margin-bottom: 0;
+}
+.frame-type-jocontent_c12 .image-textbox > * {
+    background-color: #788A29;
+    display: inline;
+    padding: 0 5px;
+}
+
+.frame-type-jocontent_c12 .image-textbox > div {
+    padding: 5px 10px;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.frame-type-jocontent_c12 .image-textbox > p {
+    margin-bottom: 5px;
+    text-transform: none;
+}
+.frame-type-jocontent_c12 .image-textbox a {
+    color: #fff;
+}
+.frame-type-jocontent_c12 .image-textbox > p:last-child {
+    margin: 40px 0 0 50%;
+    transform: translateX(-50%);
+    display: block;
+    text-align: center;
+}
+.frame-type-jocontent_c12 .image-textbox {
+  text-align: center;
+}
+
+*/

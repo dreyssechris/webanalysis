@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- 
+	Diese Seite wurde erstellt von:
+	        JUSTORANGE - Agentur für Informationsästhetik
+	        Zwätzengasse 14
+	        07743 Jena
+	        http://www.justorange.de
+
+	This website is powered by TYPO3 - inspiring people to share!
+	TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.
+	TYPO3 is copyright 1998-2024 of Kasper Skaarhoj. Extensions are copyright of their respective owners.
+	Information and contribution at https://typo3.org/
+-->
+
+
+	<link rel="icon" href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon.ico"
+		type="image/vnd.microsoft.icon">
+	<title>Tagebuch</title>
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="generator" content="TYPO3 CMS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index,follow">
+	<meta name="twitter:card" content="summary">
+	<meta name="format-detection" content="telephone = no">
+	<meta name="msapplication-tilecolor" content="#ffffff">
+	<meta name="msapplication-navbutton-color" content="#ffffff">
+	<meta name="icbm" content="51.539566, 9.935956">
+	<meta name="theme-color" content="#B58831">
+	<meta name="msapplication-tileimage"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-144x144.png">
+	<meta name="msapplication-square70x70logo"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-70x70.png">
+	<meta name="msapplication-square144x144logo"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-144x144.png">
+	<meta name="msapplication-square150x150logo"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-150x150.png">
+	<meta name="msapplication-wide310x150logo"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-310x150.png">
+	<meta name="msapplication-square310x310logo"
+		content="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/win8-tile-310x310.png">
+
+	<link rel="stylesheet" href="typo3temp/assets/css/7015c8c4ac5ff815b57530b221005fc6.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Fonts/Limelight.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Fonts/Lato.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/JQuery/jquery-ui.min.css"
+		media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/Bootstrap/bootstrap.min.css"
+		media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/Lightbox/lightbox.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/Slick/slick.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/Hamburgers/dist/hamburgers.min.css"
+		media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Fonts/RobotoCondensed.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/T_39/t_39_base.css?" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/T_39/t_39_portal_base.css" media="all">
+	<link rel="stylesheet" href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/Libs/Slick/slick-theme.css" media="all">
+	<link rel="stylesheet"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Css/Individuell/EvaSchiffmann/simple-lightbox.min.css"
+		media="all">
+	<link rel="stylesheet" href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Css/Individuell/EvaSchiffmann/project.css"
+		media="all">
+	<link rel="stylesheet" href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Css/Individuell/EvaSchiffmann/jo_portal.css"
+		media="all">
+	<link rel="stylesheet"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Css/Individuell/EvaSchiffmann/content_elements.css" media="all">
+	<link href="_assets/4792d0e1c14e3b813aab288ffa49845d/Css/jo.ce15.css?1730300617" rel="stylesheet">
+
+
+
+
+
+
+	<link rel="icon" type="image/x-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon.ico">
+	<link rel="icon" type="image/gif" href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon.gif">
+	<link rel="icon" type="image/png" href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon.png">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon.png">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-57x57.png" sizes="57x57">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-60x60.png" sizes="60x60">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-72x72.png" sizes="72x72">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-76x76.png" sizes="76x76">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-114x114.png"
+		sizes="114x114">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-120x120.png"
+		sizes="120x120">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-128x128.png"
+		sizes="128x128">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-144x144.png"
+		sizes="144x144">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-152x152.png"
+		sizes="152x152">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-180x180.png"
+		sizes="180x180">
+	<link rel="apple-touch-icon"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/apple-touch-icon-precomposed.png">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png"
+		href="_assets/0c4515ba57ce38fb612e5af0387ba7d3/Icons/EvaSchiffmann/favicon-196x196.png" sizes="196x196">
+	<link rel="canonical" href="http://evaschiffmann.de/" />
+
+</head>
+
+<body class="b-94">
+	<div class="joOuterDiv layout-10 d-flex flex-column "><a id="skippy"
+			class="skippy visually-hidden-focusable overflow-hidden sr-only sr-only-focusable" href="#content">
+			<div class="container"><span class="skiplink-text">Zum Hauptinhalt</span></div>
+		</a>
+		<div id="printHint" class="d-none d-print-block">
+			Hinweis: Um die korrekte Darstellung der Seite zu erhalten, müssen Sie beim Drucken die Hintergrundgrafiken
+			erlauben.
+		</div>
+		<header id="joNavi">
+			<nav id="mainNav" class="navbar navbar-expand-lg navbar-light ">
+				<div class="navbar-brand logo">
+					<div id="c94" class="frame frame-default frame-type-jocontent_c15 frame-layout-0">
+						<div class="jo-ce15"><a href="/"><img
+									src="fileadmin/user_upload/eva_schiffmann/logo_eva_schiffmann.svg" width="414"
+									height="99" alt="" /></a></div>
+					</div>
+				</div><button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+					data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+					<div class="burger-box">
+						<div class="burger-inner">
+							<div class="top-bun"></div>
+							<div class="patty"></div>
+							<div class="bottom-bun"></div>
+						</div>
+					</div>
+				</button>
+				<div class="navbar-collapse collapse" id="navbar">
+					<div class="navi-menu-contaner ml-md-auto mr-md-2">
+						<ul class="nav navbar-nav navbar-right menue hidden-xs">
+							<li class="nav-item"><a href="zum-tagebuch.html" title="Zum Tagebuch">
+									Zum Tagebuch
+								</a></li>
+							<li class="nav-item with-sub"><a href="wer-war-eva-schiffmann/juedin"
+									title="Wer war Eva Schiffmann?">
+									Wer war Eva Schiffmann?
+								</a>
+								<div class="sub_btn"></div>
+								<ul class="sub-menu tgl_menu">
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/juedin" title="Jüdin">
+											Jüdin
+										</a></li>
+									<li class="nav-item"><a href="jjwblerin-und-zionistin"
+											title="JJWBlerin und Zionistin">
+											JJWBlerin und Zionistin
+										</a></li>
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/schuelerin" title="Schülerin">
+											Schülerin
+										</a></li>
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/ein-burschiges-maedchen"
+											title="Ein burschiges Mädchen">
+											Ein burschiges Mädchen
+										</a></li>
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/kinogaengerin"
+											title="Kinogängerin">
+											Kinogängerin
+										</a></li>
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/pazifistin" title="Pazifistin">
+											Pazifistin
+										</a></li>
+									<li class="nav-item"><a href="wer-war-eva-schiffmann/weltverbesserin"
+											title="Weltverbesserin">
+											Weltverbesserin
+										</a></li>
+								</ul>
+							</li>
+							<li class="nav-item with-sub"><a href="themen/juedischsein-in-der-weimarer-republik"
+									title="Themen">
+									Themen
+								</a>
+								<div class="sub_btn"></div>
+								<ul class="sub-menu tgl_menu">
+									<li class="nav-item"><a href="themen/juedischsein-in-der-weimarer-republik"
+											title="Jüdischsein">
+											Jüdischsein
+										</a></li>
+									<li class="nav-item"><a href="themen/juedische-jugendbewegung"
+											title="Jüdische Jugendbewegung">
+											Jüdische Jugendbewegung
+										</a></li>
+									<li class="nav-item"><a href="themen/schule-und-bildungsreform"
+											title="Schule und Bildungsreform">
+											Schule und Bildungsreform
+										</a></li>
+									<li class="nav-item"><a href="themen/gleichberechtigung-und-sexuaslrefom"
+											title="Emanzipation">
+											Emanzipation
+										</a></li>
+									<li class="nav-item"><a href="themen/kino-und-theater" title="Kino und Theater">
+											Kino und Theater
+										</a></li>
+									<li class="nav-item"><a href="themen/krieg-und-frieden" title="Krieg und Frieden">
+											Krieg und Frieden
+										</a></li>
+									<li class="nav-item"><a href="themen/krieg-und-frieden-1"
+											title="USA, Sowjetunion, Palästina">
+											USA, Sowjetunion, Palästina
+										</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a href="orte" title="Orte">
+									Orte
+								</a></li>
+							<li class="nav-item"><a href="evas-lektueren" title="Evas Lektüren">
+									Evas Lektüren
+								</a></li>
+							<li class="nav-item"><a href="suche" title="Suche"><img
+										src="fileadmin/user_upload/eva_schiffmann/lupe.svg" width="21" height="22"
+										alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main id="maincontent">
+			<div class="joBcp">
+				<p><span class="joBcpStartText">Sie befinden sich hier:&nbsp;&nbsp;</span></p>
+			</div>
+			<div class="joMainWrapper"><!--TYPO3SEARCH_begin-->
+				<div id="c1256" class="frame frame-default frame-type-image frame-layout-0">
+					<div class="ce-image ce-left ce-above">
+						<div class="ce-gallery" data-ce-columns="1" data-ce-images="1">
+							<div class="ce-row">
+								<div class="ce-column">
+									<figure class="image"><img class="image-embed-item"
+											src="fileadmin/_processed_/6/f/csm_tagebuch_landingpage_hg_aee5532198.jpg"
+											width="1600" height="1066" loading="lazy" alt="" /></figure>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="c1257" class="frame frame-default frame-type-image frame-layout-0">
+					<div class="ce-image ce-left ce-above">
+						<div class="ce-gallery" data-ce-columns="1" data-ce-images="1">
+							<div class="ce-row">
+								<div class="ce-column">
+									<figure class="image"><a href="start"><img class="image-embed-item"
+												src="fileadmin/user_upload/eva_schiffmann/Vorschaltseite/tagebuch_landingpage_btn.svg"
+												width="120" height="119" loading="lazy" alt="" /></a></figure>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!--TYPO3SEARCH_end-->
+			</div>
+			<div id="mobile-hidden" class="d-none d-sm-none d-md-block"></div>
+			<div id="cookie-teaser"><span>Diese Webseite verwendet Cookies. Durch die Nutzung der Webseite stimmen Sie
+					der Verwendung von Cookies zu. Nähere Informationen finden Sie in unseren </span><a
+					class="joUnderline" href="datenschutz">Datenschutzbestimmungen</a>.
+				<a id="cookieOk" href="javascript:void(0)">OK</a>
+			</div>
+
+			<div id="joAjaxloader" style="display: none;">
+				<div class="joLoader"></div>
+			</div>
+			<a href="/" class="back-to-top">
+				<div class="vp">
+					<div class="joSprite" title="Scroll to Top"></div>
+				</div>
+			</a>
+		</main>
+		<footer class="mt-auto">
+			<div class="footer-wrap py-5">
+				<div id="c1269" class="gridcontent grid-6-6 clearfix grid-layout-0 grid-frame-2 row">
+					<div id="c1269-1" class="col-12 col-sm-6 colnr-1 noPadding">
+						<div id="c1268" class="frame frame-default frame-type-text frame-layout-0">
+							<div class="joText-wrapper">
+								<p>Historisches Institut der Friedrich-Schiller-Universität Jena&nbsp;<br> Professur für
+									Geschichtsdidaktik</p>
+								<p>Zwätzengasse 3<br> 07743 Jena&nbsp;</p>
+							</div>
+						</div>
+					</div>
+					<div id="c1269-2" class="col-12 col-sm-6 colnr-2 noPadding">
+						<div id="c1266" class="frame frame-default frame-type-menu_subpages frame-layout-0">
+							<ul>
+								<li><a href="kontakt" target="" title="Kontakt"><span>Kontakt</span></a></li>
+								<li><a href="datenschutz" target="" title="Datenschutz"><span>Datenschutz</span></a>
+								</li>
+								<li><a href="impressum" target="" title="Impressum"><span>Impressum</span></a></li>
+							</ul>
+						</div>
+						<div id="c1267"
+							class="frame frame-default frame-type-image frame-layout-0 frame-space-before-small">
+							<div class="ce-image ce-right ce-above">
+								<div class="ce-gallery" data-ce-columns="3" data-ce-images="3">
+									<div class="ce-row">
+										<div class="ce-column">
+											<figure class="image"><img class="image-embed-item"
+													src="fileadmin/user_upload/eva_schiffmann/thulb_logo_white.svg"
+													width="117" height="35" loading="lazy" alt="" /></figure>
+										</div>
+										<div class="ce-column">
+											<figure class="image"><img class="image-embed-item"
+													src="fileadmin/user_upload/eva_schiffmann/fsu_logo_white.svg"
+													width="99" height="35" loading="lazy" alt="" /></figure>
+										</div>
+										<div class="ce-column">
+											<figure class="image"><img class="image-embed-item"
+													src="fileadmin/user_upload/eva_schiffmann/thueringen_logo_white.svg"
+													width="200" height="35" loading="lazy" alt="" /></figure>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script>
+		/*<![CDATA[*/
+		var TYPO3 = Object.assign(TYPO3 || {}, Object.fromEntries(Object.entries({ "settings": { "TS": { "parallaxe.": { "0.": { "nodename": ".header_fullscreen . header_image", "value": "5" }, "1.": { "nodename": ".hc", "value": "7" } }, "scrtop": "nojump", "mapboxstyleUrl": "mapbox:\/\/styles\/justorange2\/clj5wk5ob004501qx9vh09jwh", "mapboxaccessToken": "pk.eyJ1IjoianVzdG9yYW5nZTIiLCJhIjoiY2xqNXZjNjZ2MDU2eTNqcXh1bWQycHZ6aCJ9.krroUuPD7rH35wD2MowSXA" } } }).filter((entry) => !['__proto__', 'prototype', 'constructor'].includes(entry[0]))));
+		/*]]>*/
+	</script>
+
+
+
+
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/JQuery/jquery.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Bootstrap/popper.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/JQuery/jquery-ui.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Bootstrap/bootstrap.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Lightbox/lightbox.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Hoverdir/jquery.hoverdir.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Mirador/mirador.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Slick/slick.min.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/joTemplate.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/T_39/t_39_base.js"></script>
+	<script src="_assets/4792d0e1c14e3b813aab288ffa49845d/JavaScript/Libs/Nicescroll/jquery.nicescroll.min.js"></script>
+	<script
+		src="_assets/0c4515ba57ce38fb612e5af0387ba7d3/JavaScript/Individuell/EvaSchiffmann/simple-lightbox.jquery.min.js"></script>
+	<script
+		src="_assets/0c4515ba57ce38fb612e5af0387ba7d3/JavaScript/Individuell/EvaSchiffmann/project_base.js"></script>
+	<script src="typo3temp/assets/js/2cb5857e10e0217a22710a5a5e939637.js"></script>
+
+
+
+
+<script src="_assets/js/tracking.js"></script>
+<script src="_assets/js/cookieConsent.js"></script>
+</body>
+
+</html>

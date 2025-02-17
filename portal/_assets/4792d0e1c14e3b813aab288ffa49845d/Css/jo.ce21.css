@@ -1,0 +1,41 @@
+.c_21 ul {
+	margin-left: 0;
+	margin-right: 0;
+    border-top: 1px solid black;
+}
+.c_21 ul li {
+	padding: 0;
+}
+.c_21 li a {
+	display: block;
+	padding: 3vw;
+	text-align: center;
+}
+.c_21 li.no-next:first-child a {
+	border-right: 1px solid black;
+}
+.c_21 li:last-child a {
+    border-left: 1px solid black;
+}
+.c_21 .p-arrow,
+.c_21 .custom-link:before {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-image: url(../Images/sprite_portal_black.svg);
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: -445px -47px;
+    transform: rotate(180deg);
+}
+.c_21 li:last-child .p-arrow,
+.c_21 li:last-child .custom-link:before {
+    margin-right: 0;
+    margin-left: 5px;
+    transform: rotate(0deg);
+}
+.c_21 .custom-link:before {
+    content: '';
+}

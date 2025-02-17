@@ -1,0 +1,54 @@
+.proxy{
+	font-size: 30px;
+	display: flow-root;
+	background-color: white;
+	font-weight: 700;
+	font-size: x-large;
+	padding-bottom: 1em;
+	margin-bottom: -2em;
+	margin-top: 5em;
+}
+.proxy h2{
+	padding-left: 2rem;
+}
+.proxy p{
+	margin-left: 1em;
+	font-weight: 400;
+}
+.picture{
+	background-repeat: no-repeat;
+	height: calc(100vh-200px);
+    background-size: cover;   
+}
+.forms{
+	font-size: 30px;
+	display: flow-root;
+	background-color: white;
+	font-weight: 700;
+	font-size: x-large;
+	padding-bottom: 1em;
+}
+@media only screen and (max-width:1025px){ 
+.proxy{
+	margin-left: 1em;
+	margin-top: 1em;
+	margin-bottom: 0em;
+	}
+}
+@media only screen and (max-width:426px){
+.proxy{
+	margin-right: -1em;
+	background-color: whitesmoke;
+	}
+.proxy p{
+	margin-left: 0.5em;
+	}
+.proxy h2{
+	margin-left: -1rem;
+	}
+}
+@media only screen and (max-width:376px){
+.proxy h2{
+	font-size: 2.75rem;
+	}
+}

@@ -1,4 +1,4 @@
-// Callback if Document is fully loaded
+// callback if document is fully loaded
 document.addEventListener("DOMContentLoaded", function() { 
   
     // eventListener if "Ok" was clicked: ID 'cookieOk'

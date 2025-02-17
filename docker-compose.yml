@@ -20,7 +20,8 @@ services:
     links:
       - db
     volumes:
-      - matomo:/var/www/html
+      - matomo:/var/www/html # matomo saved on a volume
+      - ./config.ini.php:/var/www/html/config/config.ini.php # matomo config saved on device
     environment:
       - MATOMO_DATABASE_HOST=db
       - PHP_MEMORY_LIMIT=2048M

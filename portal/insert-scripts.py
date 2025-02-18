@@ -10,7 +10,7 @@ import os
 root_tracking_script = '<script src="_assets/js/tracking.js"></script>'
 root_confirm_script  = '<script src="_assets/js/confirmConsent.js"></script>'
 root_withdraw_script = '<script src="_assets/js/withdrawConsent.js"></script>'
-root_insertion       = root_confirm_script + "\n" + root_withdraw_script + "\n" + root_tracking_script + "\n"
+root_insertion       = root_confirm_script + "\n" + root_tracking_script + "\n"
 
 # search for .html files in root dir
 for file in os.listdir("."):
@@ -20,13 +20,21 @@ for file in os.listdir("."):
                 content = f.read()
             
             if "</body>" in content:
-                # check if one tag is existing
-                if (root_tracking_script in content or 
-                    root_confirm_script  in content or 
-                    root_withdraw_script in content):
+                # insert withdraw-script into datenschutz-page if its not existing yet
+                if file.lower() == "datenschutz.html":
+                    if root_withdraw_script in content:
+                        print(f"Withdraw script already inserted in datenschutz.html: {file}")
+                    else:
+                        new_content = content.replace("</body>", root_withdraw_script + "\n" + root_insertion + "</body>")
+                        with open(file, "w", encoding="utf-8") as f:
+                            f.write(new_content)
+                        print(f"Withdraw script inserted into datenschutz.html: {file}")
+                    continue  # Verarbeitung dieser Datei abgeschlossen.
+                
+                # for all other files check if confirm and tracking tags are existing
+                if root_tracking_script in content or root_confirm_script in content:
                     print(f"Scripts already inserted in (root): {file}")
                 else:
-                    # insert before "</body>"
                     new_content = content.replace("</body>", root_insertion + "</body>")
                     with open(file, "w", encoding="utf-8") as f:
                         f.write(new_content)
@@ -43,8 +51,7 @@ for file in os.listdir("."):
 
 sub_tracking_script = '<script src="../_assets/js/tracking.js"></script>'
 sub_confirm_script  = '<script src="../_assets/js/confirmConsent.js"></script>'
-sub_withdraw_script = '<script src="../_assets/js/withdrawConsent.js"></script>'
-sub_insertion       = sub_confirm_script + "\n" + sub_withdraw_script + "\n" + sub_tracking_script + "\n"
+sub_insertion       = sub_confirm_script + "\n" + sub_tracking_script + "\n"
 
 # repeat insertion for subfolders of root
 for dirpath, dirnames, filenames in os.walk("."):
@@ -60,8 +67,7 @@ for dirpath, dirnames, filenames in os.walk("."):
                 if "</body>" in content:
                     # check if one tag is existing
                     if (sub_tracking_script in content or 
-                        sub_confirm_script  in content or 
-                        sub_withdraw_script in content):
+                        sub_confirm_script  in content):
                         print(f"Scripts already inserted in (sub): {file_path}")
                     else:
                         # insert before "</body>"

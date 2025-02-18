@@ -1,4 +1,8 @@
 services:
+
+#################################
+# MariaDB Service
+#################################
   db:
     image: mariadb:10.6
     command: --max-allowed-packet=64MB
@@ -12,12 +16,14 @@ services:
     networks:
       - matomo_network
 
+#################################
+# Matomo Service
+#################################
+
   matomo:
     image: matomo:5.0.2-fpm-alpine
     restart: always
-    depends_on:
-      - db
-    links:
+    depends_on: # only start if db is up and running
       - db
     volumes:
       - matomo:/var/www/html # matomo saved on a volume
@@ -30,19 +36,29 @@ services:
     networks:
       - matomo_network
 
+#################################
+# nginx reverse-proxy to matomo 
+# https://localhost:8111
+#################################
+
   web:
     image: nginx:alpine
     restart: always
-    depends_on:
+    depends_on: # only start if matomo is up and running
       - matomo
     volumes:
       - matomo:/var/www/html:ro
       - ./nginx/config/matomo.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro  # Mount SSL-Zertifikate in den Container
+      - ./nginx/ssl:/etc/nginx/ssl:ro  
     ports:
-      - 8111:443  # Matomo über HTTPS erreichbar
+      - 8111:443  # matomo via https
     networks:
       - matomo_network
+
+#################################
+# Webserver evaschiffmann.de
+# https://localhost:8080
+#################################
 
   portal:
     image: nginx:alpine
@@ -50,17 +66,43 @@ services:
     volumes:
       - ./portal:/usr/share/nginx/html:ro
       - ./nginx/config/portal.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro  # Mount SSL-Zertifikate in den Container
+      - ./nginx/ssl:/etc/nginx/ssl:ro  
+    networks:
+      - matomo_network
+    depends_on: # only start if tracking is available (matomo started and can be contacted)
+      - web
+    ports:
+      - 8080:443 # evaschiffmann via https
+
+#################################
+# Grafana
+# https://localhost:8080
+#################################
+
+  grafana:
+    image: grafana/grafana-oss
+    restart: always
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+      - ./nginx/ssl:/etc/nginx/ssl:ro  
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel # to be added..
+      - GF_SERVER_PROTOCOL=https
+      - GF_SERVER_CERT_FILE=/etc/nginx/ssl/localhost.crt
+      - GF_SERVER_CERT_KEY=/etc/nginx/ssl/localhost.key
+    env_file:
+      - ./grafana.env
     networks:
       - matomo_network
     depends_on:
-      - web
+      - db
     ports:
-      - 8080:443
+      - 3000:3000 # Grafana via HTTPS
 
 volumes:
   db:
   matomo:
+  grafana:
 
 networks:
   matomo_network:

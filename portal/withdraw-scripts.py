@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 
 #! Execute once to withdraw all scripts and events needed for matomo tracking - disables matomo tracking
@@ -89,3 +90,32 @@ if os.path.isdir(target_folder):
         print(f"Error deleting {target_folder}: {e}")
 else:
     print(f"Folder does not exist: {target_folder}")
+
+#############################################################
+# part 4: remove tracking consent button using regex 
+#############################################################
+
+
+# <p><br> <button id="toggleConsent">...whatever content...</button> </p>
+toggle_button_pattern = re.compile(
+    r'<p>\s*<br>\s*<button\s+id=["\']toggleConsent["\'].*?</button>\s*</p>',
+    re.IGNORECASE | re.DOTALL # for line breaks and size of letters
+)
+
+for file in os.listdir("."):
+    if file.lower() == "datenschutz.html" and os.path.isfile(file):
+        try:
+            with open(file, "r", encoding="utf-8") as f:
+                content = f.read()
+            
+            # re.sub to remove the button element
+            new_content = re.sub(toggle_button_pattern, "", content)
+            
+            if new_content != content:
+                with open(file, "w", encoding="utf-8") as f:
+                    f.write(new_content)
+                print(f"Toggle button removed from {file}")
+            else:
+                print(f"No toggle button found in {file}")
+        except Exception as e:
+            print(f"Error editing {file}: {e}")

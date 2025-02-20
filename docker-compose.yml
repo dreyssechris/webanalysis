@@ -18,6 +18,7 @@ services:
 
 #################################
 # Matomo Service
+# API-Token: efe94d698d3548746d77c1e5fd8d36a9
 #################################
 
   matomo:
@@ -83,10 +84,11 @@ services:
     image: grafana/grafana-oss
     restart: always
     volumes:
+      - ./grafana-config/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana-data:/var/lib/grafana
-      - ./nginx/ssl:/etc/nginx/ssl:ro  
+      - ./nginx/ssl:/etc/nginx/ssl:ro
     environment:
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel # to be added..
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource # to be added..
       - GF_SERVER_PROTOCOL=https
       - GF_SERVER_CERT_FILE=/etc/nginx/ssl/localhost.crt
       - GF_SERVER_CERT_KEY=/etc/nginx/ssl/localhost.key
@@ -102,7 +104,6 @@ services:
 volumes:
   db:
   matomo:
-  grafana:
 
 networks:
   matomo_network:

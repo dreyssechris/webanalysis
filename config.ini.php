@@ -9,7 +9,7 @@ tables_prefix = "matomo_"
 charset = "utf8mb4"
 
 [General]
-salt = "9c24d35ec558c741d38220b281401ac6"
+salt = "e846f9347825fb74ade8e5ca8db73750"
 trusted_hosts[] = "localhost:8111"
 
 [PluginsInstalled]

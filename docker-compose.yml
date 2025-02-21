@@ -18,7 +18,7 @@ services:
 
 #################################
 # Matomo Service
-# API-Token: efe94d698d3548746d77c1e5fd8d36a9
+# API-Token: ec1e6b6dafaf9db920992d4241b6df53
 #################################
 
   matomo:
@@ -28,7 +28,6 @@ services:
       - db
     volumes:
       - matomo:/var/www/html # matomo saved on a volume
-      - ./config.ini.php:/var/www/html/config/config.ini.php # matomo config saved on device
     environment:
       - MATOMO_DATABASE_HOST=db
       - PHP_MEMORY_LIMIT=2048M
@@ -84,14 +83,14 @@ services:
     image: grafana/grafana-oss
     restart: always
     volumes:
-      - ./grafana-config/grafana.ini:/etc/grafana/grafana.ini
-      - ./grafana-data:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana
       - ./nginx/ssl:/etc/nginx/ssl:ro
-    environment:
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource # to be added..
+    environment: # persistently modify configurations
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource # to be added.. always to latest version is used
       - GF_SERVER_PROTOCOL=https
       - GF_SERVER_CERT_FILE=/etc/nginx/ssl/localhost.crt
       - GF_SERVER_CERT_KEY=/etc/nginx/ssl/localhost.key
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=true # because signature problems with different versions of the project 
     env_file:
       - ./grafana.env
     networks:
@@ -104,6 +103,7 @@ services:
 volumes:
   db:
   matomo:
+  grafana-storage:
 
 networks:
   matomo_network:

@@ -1,5 +1,2 @@
 /portal/fileadmin
-db.env
-grafana.env
 .DS_Store
-config.ini.php

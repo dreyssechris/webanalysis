@@ -95,7 +95,6 @@ else:
 # part 4: remove tracking consent button using regex 
 #############################################################
 
-
 # <p><br> <button id="toggleConsent">...whatever content...</button> </p>
 toggle_button_pattern = re.compile(
     r'<p>\s*<br>\s*<button\s+id=["\']toggleConsent["\'].*?</button>\s*</p>',

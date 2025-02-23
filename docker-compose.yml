@@ -17,12 +17,11 @@ services:
       - matomo_network
 
 #################################
-# Matomo Service
-# API-Token: ec1e6b6dafaf9db920992d4241b6df53
+# Matomo Instance
 #################################
-
+ 
   matomo:
-    image: matomo:5.0.2-fpm-alpine
+    image: matomo:5.2.2-fpm-alpine
     restart: always
     depends_on: # only start if db is up and running
       - db
@@ -41,7 +40,7 @@ services:
 # https://localhost:8111
 #################################
 
-  web:
+  matomo_nginx:
     image: nginx:alpine
     restart: always
     depends_on: # only start if matomo is up and running
@@ -52,6 +51,22 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl:ro  
     ports:
       - 8111:443  # matomo via https
+    networks:
+      - matomo_network
+
+#################################
+# nginx reverse-proxy to grafana 
+# https://localhost:3000
+#################################
+
+  grafana_nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx/config/grafana.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    ports:
+      - 3000:443
     networks:
       - matomo_network
 
@@ -70,13 +85,12 @@ services:
     networks:
       - matomo_network
     depends_on: # only start if tracking is available (matomo started and can be contacted)
-      - web
+      - matomo_nginx
     ports:
       - 8080:443 # evaschiffmann via https
 
 #################################
-# Grafana
-# https://localhost:8080
+# Grafana Instance
 #################################
 
   grafana:
@@ -87,19 +101,15 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl:ro
     environment: # persistently modify configurations
       - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource # to be added.. always to latest version is used
-      - GF_SERVER_PROTOCOL=https
-      - GF_SERVER_CERT_FILE=/etc/nginx/ssl/localhost.crt
-      - GF_SERVER_CERT_KEY=/etc/nginx/ssl/localhost.key
       - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=true # because signature problems with different versions of the project 
+      - GF_SERVER_PROTOCOL=http
     env_file:
       - ./grafana.env
     networks:
       - matomo_network
     depends_on:
-      - db
-    ports:
-      - 3000:3000 # Grafana via HTTPS
-
+      - db 
+                       
 volumes:
   db:
   matomo:

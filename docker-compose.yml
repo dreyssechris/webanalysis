@@ -9,6 +9,7 @@ services:
     restart: always
     volumes:
       - db:/var/lib/mysql
+      - ./mysql-init-scripts:/docker-entrypoint-initdb.d:ro # initially execute those scripts once
     environment:
       - MYSQL_ROOT_PASSWORD=
     env_file:

@@ -102,7 +102,7 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl:ro
       - ./grafana.ini:/etc/grafana/grafana.ini
     environment: # persistently modify configurations
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource # to be added.. always to latest version is used
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource, marcusolsson-gantt-panel # to be added.. always to latest version is used
       - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=true # because signature problems with different versions of the project 
       - GF_SERVER_PROTOCOL=http
       - GF_PATHS_CONFIG=/etc/grafana/grafana.ini

@@ -16,3 +16,91 @@ _paq.push(['enableLinkTracking']);
   g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 })();
 
+/**************Expand Headings Event: Tagebücher************************ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Wähle alle Überschriften mit ID `heading-*`, aber **ignoriere `heading-0-0`**
+  const headings = document.querySelectorAll("[id^='heading-']:not(#heading-0-0)");
+
+  headings.forEach(heading => {
+      heading.addEventListener("click", function () {
+          const isExpanded = heading.getAttribute("aria-expanded") === "true";
+          const headingText = heading.textContent.trim(); // Überschriftstext extrahieren
+
+          if (!isExpanded) {
+              // Startzeit → Überschrift wird aufgeklappt
+              _paq.push([
+                  "trackEvent",
+                  "interaction",  // Event-Kategorie
+                  "expand",  // Event-Aktion
+                  headingText,  // Event-Label (Überschriftentext)
+                  new Date().getTime() // Zeitstempel
+              ]);
+          } else {
+              // Endzeit → Überschrift wird zugeklappt
+              _paq.push([
+                  "trackEvent",
+                  "interaction",  // Event-Kategorie
+                  "close",  // Event-Aktion
+                  headingText,  // Event-Label (Überschriftentext)
+                  new Date().getTime() // Zeitstempel
+              ]);
+          }
+      });
+  });
+});
+
+/**************Expand Headings Event: Evas Lektüren************************ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Wähle alle ausklappbaren Überschriften (`grid-header collapsed` mit `data-toggle="collapse"`)
+  const collapsibleHeaders = document.querySelectorAll(".grid-header.collapsed[data-toggle='collapse']");
+
+  collapsibleHeaders.forEach(header => {
+      header.addEventListener("click", function () {
+          const isExpanded = header.getAttribute("aria-expanded") === "true";
+          const headerText = header.textContent.trim(); // Extrahiere den Text der Überschrift
+
+          if (!isExpanded) {
+              // Startzeit → Überschrift wird aufgeklappt
+              _paq.push([
+                  "trackEvent",
+                  "interaction",  // Event-Kategorie
+                  "expand",  // Event-Aktion
+                  headerText,  // Event-Label (Überschriftentext)
+                  new Date().getTime() // Zeitstempel
+              ]);
+          } else {
+              // Endzeit → Überschrift wird zugeklappt
+              _paq.push([
+                  "trackEvent",
+                  "interaction",  // Event-Kategorie
+                  "close",  // Event-Aktion
+                  headerText,  // Event-Label (Überschriftentext)
+                  new Date().getTime() // Zeitstempel
+              ]);
+          }
+      });
+  });
+});
+
+/*
+function endMatomoSession() {
+  _paq.push(['resetUserId']); // Neue User-ID setzen
+  _paq.push(['forgetUserOptOut']); // Falls Opt-Out aktiv war, zurücksetzen
+  _paq.push(['disableCookies']); // Cookies deaktivieren
+  _paq.push(['trackPageView']); // Neue Session wird gestartet
+
+  // Alle Matomo-Cookies löschen
+  var cookies = document.cookie.split("; ");
+  for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].split("=")[0];
+      if (cookie.startsWith("_pk_") || cookie.startsWith("mtm_")) {
+          document.cookie = cookie + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+  }
+  console.log("Matomo: Session & Cookies gelöscht. Neue Session gestartet.");
+}
+endMatomoSession();
+
+*/

@@ -7,7 +7,7 @@ var _paq = window._paq = window._paq || [];
 _paq.push(['requireConsent']);
 
 _paq.push(['trackPageView']);
-_paq.push(['enableLinkTracking']);
+_paq.push(['enableLinkTracking']); // Otgoing links are beeing tracked
 (function() {
   var u="//localhost:8111/";
   _paq.push(['setTrackerUrl', u+'matomo.php']);
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/**************Expand Headings Event: Evas Lektüren************************ */
+/**************Expand Headings Event: All Other************************ */
 
 document.addEventListener("DOMContentLoaded", function () {
   // Wähle alle ausklappbaren Überschriften (`grid-header collapsed` mit `data-toggle="collapse"`)
@@ -84,6 +84,77 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/**************Expand Headings Event: Orte************************ */
+
+
+/**************Audio Clip Event ********************************** */
+document.addEventListener("DOMContentLoaded", function () {
+    const audioPlayers = document.querySelectorAll(".audio-player");
+
+    audioPlayers.forEach((audio) => {
+        let audioTitle = audio.querySelector("source") ? audio.querySelector("source").src.split("/").pop() : "Unkown Audio"; // Dateiname als Titel
+
+        audio.addEventListener("play", function () {
+            _paq.push([
+                "trackEvent",
+                "audio",  // Event-Kategorie
+                "play",  // Event-Aktion
+                audioTitle,  // Event-Label (Dateiname)
+                new Date().getTime() // Zeitstempel
+            ]);
+
+            console.log(`Event send: audio '${audioTitle}' started.`);
+        });
+
+        audio.addEventListener("pause", function () {
+            _paq.push([
+                "trackEvent",
+                "audio",  // Event-Kategorie
+                "pause",  // Event-Aktion
+                audioTitle,  // Event-Label (Dateiname)
+                new Date().getTime() // Zeitstempel
+            ]);
+
+            console.log(`Event send: audio '${audioTitle}' paused.`);
+        });
+    });
+});
+
+/**************Video Clip Event ********************************** */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((video) => {
+        const videoTitle = video.closest(".slider-item")?.querySelector("h3")?.innerText || "Unknown Video";
+        
+        video.addEventListener("play", function () {
+            _paq.push([
+                "trackEvent",
+                "video",
+                "play",
+                videoTitle,
+                new Date().getTime()
+            ]);
+            console.log(`Event send: video '${videoTitle}' started.`);
+        });
+
+        video.addEventListener("pause", function () {
+            _paq.push([
+                "trackEvent",
+                "video",
+                "pause",
+                videoTitle,
+                new Date().getTime()
+            ]);
+            console.log(`Event send: video '${videoTitle}' paused.`);
+        });
+
+    });
+});
+
+
+
 /*
 function endMatomoSession() {
   _paq.push(['resetUserId']); // Neue User-ID setzen
@@ -102,5 +173,5 @@ function endMatomoSession() {
   console.log("Matomo: Session & Cookies gelöscht. Neue Session gestartet.");
 }
 endMatomoSession();
-
 */
+

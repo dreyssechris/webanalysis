@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Startzeit → Überschrift wird aufgeklappt
               _paq.push([
                   "trackEvent",
-                  "interaction",  // Event-Kategorie
+                  "interaction - " + document.title,  // Event-Kategorie
                   "expand",  // Event-Aktion
                   headingText,  // Event-Label (Überschriftentext)
                   new Date().getTime() // Zeitstempel
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Startzeit → Überschrift wird aufgeklappt
               _paq.push([
                   "trackEvent",
-                  "interaction",  // Event-Kategorie
+                  "interaction - " + document.title,  // Event-Kategorie
                   "expand",  // Event-Aktion
                   headerText,  // Event-Label (Überschriftentext)
                   new Date().getTime() // Zeitstempel
@@ -153,8 +153,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/********************************************************* */
+/**************Scroll depth Event**************************** */
+/*
+var maxScrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+var percentagesArr = [25, 50, 75, 100];
+const showed = {};
+let timeout;
+let previousPercentage;
 
+var pagePath = window.location.pathname.split("?")[0].split("#")[0];
 
+window.addEventListener("scroll", function () {
+    var scrollVal = window.scrollY;
+    var scrollPercentage = Math.round(scrollVal / maxScrollHeight * 100);
+    let currentPercentage = 0;
+    let i = 0;
+
+    while (percentagesArr[i] <= scrollPercentage) {
+        currentPercentage = percentagesArr[i++];
+    }
+
+    if (previousPercentage !== currentPercentage) {
+        clearTimeout(timeout);
+
+        if (currentPercentage !== 0 && !showed[currentPercentage]) {
+            timeout = setTimeout(() => {
+                // pathname as name to filter individual scroll depth for all sites
+                // _paq.push(['trackEvent', 'Category', 'action', 'name (optional)', 'value (optional)']); percentage
+                _paq.push(['trackEvent', 'scroll_depth', pagePath, currentPercentage]);
+                console.log("Tracking scroll_depth:", currentPercentage, "on Site:", pagePath);
+                showed[currentPercentage] = true;
+            }, 2000);
+        }
+
+        previousPercentage = currentPercentage;
+    }
+});
+
+window.addEventListener("resize", () => {
+    maxScrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+});
+
+*/
 /*
 function endMatomoSession() {
   _paq.push(['resetUserId']); // Neue User-ID setzen

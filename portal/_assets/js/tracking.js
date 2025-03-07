@@ -8,6 +8,7 @@ _paq.push(['requireConsent']);
 
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']); // Otgoing links are beeing tracked
+
 (function() {
   var u="//localhost:8111/";
   _paq.push(['setTrackerUrl', u+'matomo.php']);

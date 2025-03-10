@@ -20,7 +20,7 @@ services:
 #################################
 # Matomo Instance
 #################################
- 
+
   matomo:
     image: matomo:5.2.2-fpm-alpine
     restart: always

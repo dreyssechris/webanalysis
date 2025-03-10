@@ -1,5 +1,5 @@
 import os
-
+ 
 #! Execute once to insert all scripts and events needed for matomo tracking - enables matomo tracking
 #! To remove matomo tracking execute withdraw-scripts.py
 
@@ -161,7 +161,7 @@ _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']); // Otgoing links are beeing tracked
 
 (function() {
-  var u="//localhost:8111/"; // Matomo URL
+  var u="//localhost:8111/"; // Matomo URL - replace with: evaschiffmann.de
   _paq.push(['setTrackerUrl', u+'matomo.php']);
   _paq.push(['setSiteId', '1']);
   var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -249,8 +249,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         expanded.textContent.trim(),
                         new Date().getTime()
                     ]);
-
-
                 }
             });
 
@@ -304,12 +302,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const closeButton = slide.querySelector(".close");
 
         if (titleElement) {
-            const titleText = titleElement.textContent.trim(); // Extrahiere den Titel
+            const titleText = titleElement.textContent.trim();
 
-            // Prüfe, ob eine andere Überschrift bereits geöffnet ist
             slide.addEventListener("mouseenter", function () {
                 const expandedSlides = document.querySelectorAll(".map-slide-item[aria-expanded='true']");
 
+                // close-Event if another heading was openend before
                 expandedSlides.forEach(expanded => {
                     if (expanded !== slide) {
                         const expandedTitle = expanded.querySelector(".title_or_symbols h2 p");
@@ -323,12 +321,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             ]);
                         }
 
-                        // Markiere die vorherige als geschlossen
-                        expanded.setAttribute("aria-expanded", "false");
                     }
                 });
 
-                // `expand`-Event für die aktuelle Überschrift senden
+                // `expand`-Event for the current heading
                 _paq.push([
                     "trackEvent",
                     "interaction - " + document.title,
@@ -340,7 +336,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 slide.setAttribute("aria-expanded", "true");
             });
 
-            // Event für explizites Schließen über den Button
             if (closeButton) {
                 closeButton.addEventListener("click", function () {
                     _paq.push([
@@ -351,13 +346,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         new Date().getTime()
                     ]);
 
-                    slide.setAttribute("aria-expanded", "false");
                 });
             }
         }
     });
 
-    // Close-Event für alle offenen Überschriften beim Verlassen der Seite**
     window.addEventListener("beforeunload", function () {
         const expandedSlides = document.querySelectorAll(".map-slide-item[aria-expanded='true']");
         expandedSlides.forEach(slide => {
@@ -380,15 +373,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const audioPlayers = document.querySelectorAll(".audio-player");
 
     audioPlayers.forEach((audio) => {
-        let audioTitle = audio.querySelector("source") ? audio.querySelector("source").src.split("/").pop() : "Unkown Audio"; // Dateiname als Titel
+        let audioTitle = audio.querySelector("source") ? audio.querySelector("source").src.split("/").pop() : "Unkown Audio";
 
         audio.addEventListener("play", function () {
             _paq.push([
                 "trackEvent",
-                "audio",  // Event-Kategorie
-                "play",  // Event-Aktion
-                audioTitle,  // Event-Label (Dateiname)
-                new Date().getTime() // Zeitstempel
+                "audio",             // category
+                "play",              // action
+                audioTitle,          // label
+                new Date().getTime() // name
             ]);
 
             console.log(`Event send: audio '${audioTitle}' started.`);
@@ -397,20 +390,19 @@ document.addEventListener("DOMContentLoaded", function () {
         audio.addEventListener("pause", function () {
             _paq.push([
                 "trackEvent",
-                "audio",  // Event-Kategorie
-                "pause",  // Event-Aktion
-                audioTitle,  // Event-Label (Dateiname)
-                new Date().getTime() // Zeitstempel
+                "audio",
+                "pause", 
+                audioTitle, 
+                new Date().getTime()
             ]);
 
             console.log(`Event send: audio '${audioTitle}' paused.`);
         });
     });
 
-    // `pause`-Event beim Verlassen der Seite, falls das Audio noch läuft
     window.addEventListener("beforeunload", function () {
         audioPlayers.forEach(audio => {
-            if (!audio.paused) { // Falls das Audio noch läuft
+            if (!audio.paused) {
                 let audioTitle = audio.querySelector("source") ? audio.querySelector("source").src.split("/").pop() : "Unkown Audio";
                 _paq.push([
                     "trackEvent",
@@ -455,10 +447,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // `pause`-Event beim Verlassen der Seite, falls das Video noch läuft
     window.addEventListener("beforeunload", function () {
         videos.forEach(video => {
-            if (!video.paused) { // Falls das Video noch läuft
+            if (!video.paused) {
                 const videoTitle = video.closest(".slider-item")?.querySelector("h3")?.innerText || "Unknown Video";
                 _paq.push([
                     "trackEvent",
@@ -534,6 +525,7 @@ function endMatomoSession() {
 }
 endMatomoSession();
 */
+
 
 """,
 }

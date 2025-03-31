@@ -12,8 +12,7 @@
 -- (Anzahl der Besuche mit ≥1 Tagebuchseiten aufgerufen) / (Gesamtanzahl der Besuche).
 
 SELECT 
-    COUNT(DISTINCT visit_with_diary.idvisit) /
-    COUNT(DISTINCT visit_all.idvisit) AS conversion_rate
+    COUNT(DISTINCT visit_with_diary.idvisit) / COUNT(DISTINCT visit_all.idvisit) AS conversion_rate
 FROM matomo_log_visit AS visit_all
 LEFT JOIN (
     SELECT visit.idvisit
@@ -27,7 +26,7 @@ LEFT JOIN (
     AND action_title.name REGEXP 'Blatt [0-9]{4}'
     AND visit.visit_first_action_time BETWEEN FROM_UNIXTIME(${__from}/1000) 
     AND FROM_UNIXTIME(${__to}/1000)
-    GROUP BY visit.idvisit
+    GROUP BY visit.idvisit  -- Sorgt dafür, dass jeder Besuch nur einmal gezählt wird
 ) AS visit_with_diary
 ON visit_all.idvisit = visit_with_diary.idvisit
 WHERE visit_all.idsite = 1

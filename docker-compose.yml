@@ -1,15 +1,47 @@
 services:
 
-#################################
-# MariaDB Service
-#################################
+  #################################
+  # Reverse Proxy (Nginx)
+  # Steuert den Zugriff auf /evaschiffmann, /matomo, /grafana
+  #################################
+  reverse_proxy:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx/config/reverse_proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro  
+      - matomo:/var/www/html
+    ports:
+      - "443:443"
+    depends_on:
+      - portal
+      - grafana
+      - matomo
+    networks:
+      - matomo_network
+
+  matomo_web:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - matomo:/var/www/html
+      - ./nginx/config/matomo.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - matomo
+    networks:
+      - matomo_network
+
+
+  #################################
+  # MariaDB Service
+  #################################
   db:
     image: mariadb:10.6
     command: --max-allowed-packet=64MB
     restart: always
     volumes:
       - db:/var/lib/mysql
-      - ./mysql-init-scripts:/docker-entrypoint-initdb.d:ro # initially execute those scripts once
+      - ./mysql-init-scripts:/docker-entrypoint-initdb.d:ro
     environment:
       - MYSQL_ROOT_PASSWORD=
     env_file:
@@ -17,102 +49,62 @@ services:
     networks:
       - matomo_network
 
-#################################
-# Matomo Instance
-#################################
-
+  #################################
+  # Matomo Instance
+  #################################
   matomo:
     image: matomo:5.2.2-fpm-alpine
     restart: always
-    depends_on: # only start if db is up and running
+    depends_on:
       - db
     volumes:
-      - matomo:/var/www/html # matomo saved on a volume
+      - matomo:/var/www/html
     environment:
       - MATOMO_DATABASE_HOST=db
       - PHP_MEMORY_LIMIT=2048M
+    expose:
+      - "9000"
     env_file:
       - ./db.env
     networks:
       - matomo_network
 
-#################################
-# nginx reverse-proxy to matomo 
-# https://localhost:8111
-#################################
-
-  matomo_nginx:
-    image: nginx:alpine
-    restart: always
-    depends_on: # only start if matomo is up and running
-      - matomo
-    volumes:
-      - matomo:/var/www/html:ro
-      - ./nginx/config/matomo.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro  
-    ports:
-      - 8111:443  # matomo via https
-    networks:
-      - matomo_network
-
-#################################
-# nginx reverse-proxy to grafana 
-# https://localhost:3000
-#################################
-
-  grafana_nginx:
-    image: nginx:alpine
-    restart: always
-    volumes:
-      - ./nginx/config/grafana.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro
-    ports:
-      - 3000:443
-    networks:
-      - matomo_network
-
-#################################
-# Webserver evaschiffmann.de
-# https://localhost:8080
-#################################
-
-  portal:
-    image: nginx:alpine
-    restart: always
-    volumes:
-      - ./portal:/usr/share/nginx/html:ro
-      - ./nginx/config/portal.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro  
-    networks:
-      - matomo_network
-    depends_on: # only start if tracking is available (matomo started and can be contacted)
-      - matomo_nginx
-    ports:
-      - 8080:443 # evaschiffmann via https
-
-#################################
-# Grafana Instance
-#################################
-
+  #################################
+  # Grafana Instance
+  #################################
   grafana:
     image: grafana/grafana-oss
     restart: always
     volumes:
       - grafana-storage:/var/lib/grafana
-      - ./nginx/ssl:/etc/nginx/ssl:ro
-      - ./grafana.ini:/etc/grafana/grafana.ini
-    environment: # persistently modify configurations
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource, marcusolsson-gantt-panel # to be added.. always to latest version is used
-      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=true # because signature problems with different versions of the project 
+    environment:
+      - GF_SERVER_ROOT_URL=https://localhost/grafana/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,yesoreyeram-infinity-datasource,marcusolsson-gantt-panel
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=true
+      - GF_SERVER_ROUTER_LOGGING=true
       - GF_SERVER_PROTOCOL=http
-      - GF_PATHS_CONFIG=/etc/grafana/grafana.ini
+      - GF_SERVER_HTTP_PORT=3000
     env_file:
       - ./grafana.env
     networks:
       - matomo_network
-    depends_on:
-      - db 
-                       
+
+
+  #################################
+  # Webserver für evaschiffmann.de
+  #################################
+  portal:
+    image: nginx:alpine
+    restart: always
+    volumes:
+    - ./portal/evaschiffmann:/usr/share/nginx/html:ro  
+    networks:
+      - matomo_network
+
+#################################
+# Netzwerke & Volumes
+#################################
 volumes:
   db:
   matomo:

@@ -6,7 +6,8 @@
 SELECT 
     (SUM(
     CASE
-        WHEN visit_total_actions = 1 THEN 1 ELSE 0 
+        WHEN visit_total_actions = 1 THEN 1 
+        ELSE 0 
     END)) / 
     COUNT(*) AS bounce_rate
 FROM matomo_log_visit

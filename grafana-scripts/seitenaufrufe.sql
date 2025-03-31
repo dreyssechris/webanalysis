@@ -2,6 +2,7 @@
 -- Handelt es sich um einen Tagebucheintrag wird aus dem Titel nur das Blatt XXXX extrahiert um den Titel zu verkürzen
 -- Es werden nur echte Seitentitel (`type = 4`) berücksichtigt, keine Events oder andere Aktionen.
 -- Sortierung nach Seitenaufrufen und Begrenzung auf max. 10 St.
+
 SELECT 
     CASE 
         WHEN log_action_title.name REGEXP 'Blatt [0-9]{4}' 

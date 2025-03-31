@@ -2,7 +2,7 @@
 -- 
 -- 1. `JOIN` verknüpft Besuche mit Aktionen und Seitentiteln.
 -- 2. `DISTINCT lv.idvisit`, um Mehrfachzählungen zu vermeiden
--- 3. `OR`-Bedingung:
+-- 4. `OR`-Bedingung:
 --    - `${Seite} = 'Übersicht'` -> Alle Seiten zählen.
 --    - `${Seite} = 'Alle Tagebücher'` -> nur Seiten mit `Blatt XXXX` zählen.
 --    - Andernfalls wird eine spezifische Seite (`title.name`) gefiltert.

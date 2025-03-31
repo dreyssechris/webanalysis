@@ -1,6 +1,7 @@
 -- Analysiert die Besucherquellen des Bildungsportals und zählt die Besuche pro Referrer.
 -- Berücksichtigt nur externe Traffic-Quellen.
 -- Verwendet die Grafana-Variable: ${Sort} für die Anzahl der Besuche, um das Ranking umkehren zu können
+
 SELECT
     COUNT(*) AS Besuche,
     visit.referer_url AS Referrer,
